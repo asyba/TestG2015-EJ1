@@ -5,7 +5,6 @@
     <classes>
       <class name="federico_bechini.training.globant.com.tests.Tests">
         <methods>
-          <include name="daylePostVerification"/>
           <include name="before"/>
           <include name="registrationAccepted"/>
           <include name="after"/>

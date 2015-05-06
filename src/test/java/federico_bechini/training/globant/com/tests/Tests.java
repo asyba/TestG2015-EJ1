@@ -57,7 +57,7 @@ public class Tests {
 		}
 		
 		
-		@Test(enabled=true, description = "Valida que la pagina sea la esperada en base a su titulo.")
+		@Test(enabled=false, description = "Valida que la pagina sea la esperada en base a su titulo.")
 		public void validatePage() throws InterruptedException {
 			
 			HomePage homePage = PageFactory.initElements(driver, HomePage.class);
@@ -67,7 +67,7 @@ public class Tests {
 			homePage.valid("Películas y Series en versión original");	
 		}
 		
-		@Test(enabled=true, description = "Mostrar la cantidad de resultados por consola (con 3 o mas letras)")
+		@Test(enabled=false, description = "Mostrar la cantidad de resultados por consola (con 3 o mas letras)")
 		public void searchResults() throws InterruptedException {
 			
 			HomePage homePage = PageFactory.initElements(driver, HomePage.class);
@@ -89,7 +89,7 @@ public class Tests {
 			Assert.assertTrue(cantidad >= 0, "ERROR: occurio algun problema inesperado.");
 		}
 		
-		@Test(enabled=true, description = "Test: Validar formularion registracion no fue valido")
+		@Test(enabled=false, description = "Test: Validar formularion registracion no fue valido")
 		public void registrationFailed() {
 			HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 			homePage.go(driver);
@@ -176,13 +176,13 @@ public class Tests {
 			Select yearForm = new Select(driver.findElement(By.cssSelector("select[id='fec_ncto']")));
 			Select sexForm = new Select(driver.findElement(By.cssSelector("select[id='sexo']")));
 			
-			userForm.sendKeys("Federic99068");  //Tener en cuenta de cambiar cada vez que se hace el test
+			userForm.sendKeys("Federic4828");  //Tener en cuenta de cambiar cada vez que se hace el test
 			passForm.sendKeys("123456789");
 			emailForm.sendKeys("hol5872a@hotmail.com");
 			nameForm.sendKeys("Federico");
 			lastnameForm.sendKeys("Bech");
 			paisForm.selectByVisibleText("Chile");
-			movilForm.sendKeys("4885968");
+			movilForm.sendKeys("3511231231");
 			dayForm.selectByVisibleText("10");
 			monthForm.selectByVisibleText("Abril");
 			yearForm.selectByVisibleText("1989");
@@ -193,17 +193,17 @@ public class Tests {
 				Reporter.log("<br>Enviando el formulario para verificar la creacion de la cuenta.");
 			submitForm.click();
 			
-			homePage.pause(10);
+			homePage.pause(13);
 				Reporter.log("<br>Buscando el texto que nos informa que todo salio bien.");
 			WebElement bodyText = driver.findElement(By.tagName("body"));
 			String textBody = bodyText.getText();
-			//System.out.println("asd"+textBody);
+			
 			boolean tmp = textBody.contains("Se ha insertado el usuario en la DB del foro correctamente");
 			boolean tmpBad = textBody.contains("El nombre de usuario proporcionado ya existe en nuestra base de datos.");
 			if(tmp){
 				Assert.assertTrue(true);
 			}
-			if(tmpBad){
+			else if (tmpBad){
 				Assert.assertFalse(true,"ERROR: El usuario ya se encuentra registrado intente otro");
 			}else{
 				Assert.assertFalse(true,"ERROR: hay algun problema que no permite completar el proceso ...");
@@ -212,7 +212,7 @@ public class Tests {
 				 //Assert.assertTrue(driver.getPageSource().contains("Se ha insertado el usuario en la DB del foro correctamente."),"no se encontro el status");			 
 		}
 
-		@Test(enabled=true, description = "Test: Contar cantidad de post en la primera serie del home.")
+		@Test(enabled=false, description = "Test: Contar cantidad de post en la primera serie del home.")
 		public void counterComments() {
 			HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 			homePage.go(driver);
@@ -240,7 +240,7 @@ public class Tests {
 			Assert.assertTrue(Integer.valueOf(number) >= 0,"ERROR: parece que no existen comentarios ...");
 		}
 		
-		@Test(enabled=true, description = "Test: Verificar que peliculas estan ordenadas por fecha decreciente.")
+		@Test(enabled=false, description = "Test: Verificar que peliculas estan ordenadas por fecha decreciente.")
 		public void moviesByDate() {
 			HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 			homePage.go(driver);
@@ -293,7 +293,7 @@ public class Tests {
 			//Assert.assertEquals(Element1,Element2,"ERROR: las peliculas no estan ordenadas forma decreciente."); 	
 		}
 		
-		@Test(enabled=true, description = "Test: Determinar si hay publicaciones diarias.")
+		@Test(enabled=false, description = "Test: Determinar si hay publicaciones diarias.")
 		public void daylePostVerification() {
 			HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 			homePage.go(driver);
